@@ -20,6 +20,13 @@
             "Alignment": 6,
             "Species": 17,
             "Background": "Edgar is a powerful vampire monarch. He aligns himself with Lawful Evil, believing in his own twisted sense of justice. His ultimate goal is to dominate all the countries and force them to accept his laws and rule."
+        },
+        {
+            "Name": "Mary",
+            "Sprite": "mary",
+            "Alignment": 2,
+            "Species": 10,
+            "Background": "Mary is a dominator angel. With her chaotic nature, she brings unpredictability and mischief wherever she goes. Despite her mischievous behavior, she possesses a strong sense of justice and fights against those who abuse their power. Mary's angelic abilities and captivating charm make her a formidable ally or a formidable foe, depending on which side of her chaotic whims you find yourself on."
         }
     ]
 }

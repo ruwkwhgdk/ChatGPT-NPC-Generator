@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -7,7 +8,7 @@ using System.IO;
 
 public class SpriteManager : MonoBehaviour
 {
-    private string OPENAI_API_KEY = System.Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+    private string OPENAI_API_KEY;
 
     public static SpriteManager Instance;
 
@@ -22,6 +23,11 @@ public class SpriteManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        OPENAI_API_KEY = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
     }
 
     public async Task<Texture2D> GenerateNPCSprite(string npcDescription, string path)

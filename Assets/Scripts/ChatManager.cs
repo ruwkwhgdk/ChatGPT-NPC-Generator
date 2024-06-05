@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class ChatManager : MonoBehaviour
     public TMP_InputField chatInputField;
     public Button sendButton;
 
-    private string OPENAI_API_KEY = System.Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+    private string OPENAI_API_KEY;
 
     private NPC curNPC;
     private NPCData curNPCData;
@@ -38,6 +39,8 @@ public class ChatManager : MonoBehaviour
 
     private void Start()
     {
+        OPENAI_API_KEY = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+
         sendButton.onClick.AddListener(SendMessageToChatGPT);
     }
 

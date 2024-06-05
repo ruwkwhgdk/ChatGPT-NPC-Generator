@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace OpenAI
 {
@@ -16,7 +17,7 @@ namespace OpenAI
         [SerializeField] private NPCDataUI NPCUIInput;
 
         private static readonly HttpClient client = new HttpClient();
-        private string apiKey = System.Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+        private string apiKey;
 
         private float height;
         private OpenAIApi openai = new OpenAIApi();
@@ -48,6 +49,8 @@ namespace OpenAI
 
         private void Start()
         {
+            apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+
             // Json Import
             JsonManager.ImportJson();
         }
@@ -159,6 +162,8 @@ namespace OpenAI
 
             string jsonBody = JsonConvert.SerializeObject(requestBody);
             var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            Debug.Log("API Key: " + apiKey);
 
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
