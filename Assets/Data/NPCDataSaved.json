@@ -1,0 +1,25 @@
+{
+    "List": [
+        {
+            "Name": "Violet",
+            "Sprite": "violet",
+            "Alignment": 0,
+            "Species": 7,
+            "Background": "Violet is an Elf Archer who is known for her extraordinary skills with the bow and arrow. She is always seen wearing her signature bikini armor, which allows her to move swiftly and freely in battle. Violet is a kind-hearted individual who is always willing to lend a helping hand to those in need. Whether it's protecting a village from marauding bandits or assisting fellow adventurers on their quests, Violet's primary goal is to ensure the safety and well-being of others. With her exceptional archery skills and unwavering determination, she has become a symbol of hope and justice among the people."
+        },
+        {
+            "Name": "Ruby",
+            "Sprite": "Ruby",
+            "Alignment": 3,
+            "Species": 5,
+            "Background": "Ruby is a cute nymph. She is kind to forest travelers but sometimes her jokes can catch them off guard, leaving them with a pleasant surprise and a slight feeling of being tricked."
+        },
+        {
+            "Name": "Edgar",
+            "Sprite": "Edgar",
+            "Alignment": 6,
+            "Species": 17,
+            "Background": "Edgar is a powerful vampire monarch. He aligns himself with Lawful Evil, believing in his own twisted sense of justice. His ultimate goal is to dominate all the countries and force them to accept his laws and rule."
+        }
+    ]
+}
