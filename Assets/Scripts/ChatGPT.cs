@@ -144,8 +144,10 @@ namespace OpenAI
 
             string promptBehaviour = $"Provide the behavior details for {npcName} at {gameTime:yyyy-MM-dd HH:mm:ss} in JSON format. " +
                 "Include TravelTime, ActionTime, Action, IsInteractNPC, and Details. " +
-                "TravelTime and ActionTime should be in the format 'N minutes'." + 
-                "Action is a summary of the NPC's behavior in a single word." + 
+                "TravelTime and ActionTime should be in the format 'N minutes'." +
+                "Action is a summary of the NPC's behavior in a single word." +
+                "ActionTime takes to perform the actual 'Action', which should be set to a realistic value, should be in the format 'N minutes'." +
+                "ActionTime required to perform a typical 'Action'' should preferably be set to at least one hour." +
                 "Details should be a single string containing all relevant information." +
                 "The NPC's behavior should be like that of actual inhabitants of a fantasy world, excluding game-related elements such as players or quests.";
 

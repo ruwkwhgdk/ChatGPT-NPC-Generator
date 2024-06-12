@@ -132,10 +132,10 @@ public class NPCManager : MonoBehaviour
     private void ViewNPCData()
     {
         NPCData npcData = selectedNPC.GetNPCData();
-        nameText.text = $"Name: {npcData.Name}";
-        speciesText.text = $"Species: {npcData.Species}";
-        alignmentText.text = $"Alignment: {npcData.Alignment}";
-        backgroundText.text = $"Background: {npcData.Background}";
+        nameText.text = $"{npcData.Name}";
+        speciesText.text = $"{npcData.Species}";
+        alignmentText.text = $"{npcData.Alignment}";
+        backgroundText.text = $"{npcData.Background}";
         npcDataPanel.SetActive(true); // 데이터 패널을 표시합니다.
         npcMenuPanel.SetActive(false); // 메뉴 패널을 숨깁니다.
     }
