@@ -127,7 +127,6 @@ namespace OpenAI
         public async Task<NPCBehaviourManager.NPCBehaviour> SetNPCBehaviour(NPC npc, DateTime gameTime)
         {
             string npcName = npc.GetNPCData().Name;
-            int currentTime = gameTime.Hour;
 
             // NPC가 이동할 위치 결정
             Vector2Int targetLocation = DetermineTargetLocation(npc);
@@ -140,14 +139,14 @@ namespace OpenAI
                 "\nWhen creating behaviors for NPCs, you should consider the current time, race, and disposition." +
                 "\nFor example, if it is nighttime, NPCs might sleep or be active depending on their species." + 
                 "\nAdditionally, the background settings of NPCs also influence their behavior." +
-                "\nCurrent time : " + currentTime;
+                "\nCurrent time : " + $"{gameTime:dd HH:mm:ss}";
 
-            string promptBehaviour = $"Provide the behavior details for {npcName} at {gameTime:yyyy-MM-dd HH:mm:ss} in JSON format. " +
+            string promptBehaviour = $"Provide the behavior details for {npcName} at {gameTime:dd HH:mm:ss} in JSON format. " +
                 "Include TravelTime, ActionTime, Action, IsInteractNPC, and Details. " +
                 "TravelTime and ActionTime should be in the format 'N minutes'." +
                 "Action is a summary of the NPC's behavior in a single word." +
                 "ActionTime takes to perform the actual 'Action', which should be set to a realistic value, should be in the format 'N minutes'." +
-                "ActionTime required to perform a typical 'Action'' should preferably be set to at least one hour." +
+                "ActionTime required to perform a typical 'Action'' should preferably be set to more than 30 minutes." +
                 "Details should be a single string containing all relevant information." +
                 "The NPC's behavior should be like that of actual inhabitants of a fantasy world, excluding game-related elements such as players or quests.";
 
@@ -188,7 +187,7 @@ namespace OpenAI
                 messageContent = Regex.Replace(messageContent, "```$", "").Trim();
 
                 // 여기서 messageContent를 파싱하여 NPCBehaviour 구조체로 변환합니다.
-                NPCBehaviourManager.NPCBehaviour npcBehaviour = ParseNPCBehaviour(npcName, currentTime, targetLocation, messageContent);
+                NPCBehaviourManager.NPCBehaviour npcBehaviour = ParseNPCBehaviour(npcName, gameTime, targetLocation, messageContent);
                 npcBehaviour.DebugNPCBehaviour();
 
                 LogManager.Instance.AddLog(npcBehaviour);
@@ -269,7 +268,7 @@ namespace OpenAI
             return new Vector2Int(0, 0);
         }
 
-        private NPCBehaviourManager.NPCBehaviour ParseNPCBehaviour(string npcName, int currentTime, Vector2Int targetLocation, string messageContent)
+        private NPCBehaviourManager.NPCBehaviour ParseNPCBehaviour(string npcName, DateTime gameTime, Vector2Int targetLocation, string messageContent)
         {
             try
             {
@@ -284,7 +283,7 @@ namespace OpenAI
                 NPCBehaviourManager.NPCBehaviour behaviour = new NPCBehaviourManager.NPCBehaviour
                 {
                     NPCName = npcName,
-                    CurrentTime = currentTime,
+                    CurrentTime = $"{gameTime:dd HH:mm:ss}",
                     Location = targetLocation,
                     TravelTime = behavior["TravelTime"] != null ? ParseTime((string)behavior["TravelTime"]) : 5,  // 기본값 5분
                     ActionTime = behavior["ActionTime"] != null ? ParseTime((string)behavior["ActionTime"]) : 5,  // 기본값 5분

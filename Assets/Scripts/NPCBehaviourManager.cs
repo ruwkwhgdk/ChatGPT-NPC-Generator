@@ -6,14 +6,14 @@ public class NPCBehaviourManager : MonoBehaviour
     public struct NPCBehaviour
     {
         public string NPCName;
-        public int CurrentTime;
+        public string CurrentTime;
         public Vector2Int Location;
         public int TravelTime;
         public int ActionTime;
         public string Action;
         public string Details;
 
-        public NPCBehaviour(string name, int currentTime, Vector2Int location, int travelTime, int actionTime, string action, string details)
+        public NPCBehaviour(string name, string currentTime, Vector2Int location, int travelTime, int actionTime, string action, string details)
         {
             NPCName = name;
             CurrentTime = currentTime;
@@ -32,8 +32,8 @@ public class NPCBehaviourManager : MonoBehaviour
 
         public string GetString()
         {
-            var npcBehaviourStr = "NPC Name : " + NPCName + " / Current TIme : " + CurrentTime + " / Location : " + Location.ToString() +
-                " / TravelTime : " + TravelTime + " / ActionTime : " + ActionTime + " / Action : " + Action + " / Details : " + Details;
+            var npcBehaviourStr = "NPC Name : " + NPCName + "\nCurrent TIme : " + CurrentTime + "\nLocation : " + Location.ToString() +
+                "\nTravelTime : " + TravelTime + " Minute\nActionTime : " + ActionTime + " Minute\nAction : " + Action + "\nDetails : " + Details;
             return npcBehaviourStr;
         }
     }

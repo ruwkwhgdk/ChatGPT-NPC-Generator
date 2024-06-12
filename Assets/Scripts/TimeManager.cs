@@ -8,14 +8,15 @@ using TMPro;
 public class TimeManager : MonoBehaviour
 {
     public GameObject timeUICanvas; // Time UI
-    public TMP_Text timeDisplay;  // 화면 상단에 시간을 표시할 UI 텍스트 요소
+    public TMP_Text timeDisplayHoutAndMinute;
+    public TMP_Text timeDisplayDay;
 
     private bool isActive = false; // TimeManager 작동 시작했는지 저장
     private bool isPause = false;
 
-    private float elapsedTime = 0f;  // 경과된 현실 시간
-    private DateTime gameTime;  // 게임 시간
-    private const float realTimeToGameTimeFactor = 12f;  // 현실 시간 1초를 게임 시간 5분으로 변환
+    private float elapsedTime = 0f; // 경과된 현실 시간
+    private DateTime gameTime; // 게임 시간
+    private const float realTimeToGameTimeFactor = 12f; // 현실 시간 1초를 게임 시간 5분으로 변환
 
     public static TimeManager Instance;
 
@@ -59,6 +60,11 @@ public class TimeManager : MonoBehaviour
         return isActive && !isPause;
     }
 
+    public bool GetIsPause()
+    {
+        return isPause;
+    }
+
     void Update()
     {
         if (!isActive || isPause)
@@ -79,7 +85,8 @@ public class TimeManager : MonoBehaviour
 
     void UpdateTimeDisplay()
     {
-        timeDisplay.text = gameTime.ToString("dd HH:mm");
+        timeDisplayHoutAndMinute.text = gameTime.ToString("HH:mm");
+        timeDisplayDay.text = "Day " + gameTime.ToString("dd");
     }
 
     private async Task NotifyNPCManager()

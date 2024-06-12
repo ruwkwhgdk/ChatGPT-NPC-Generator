@@ -109,15 +109,18 @@ public class NPCManager : MonoBehaviour
 
     public void ShowNPCMenu(NPC npc)
     {
-        TimeManager.Instance.Pause();
+        if (!TimeManager.Instance.GetIsPause())
+        {
+            TimeManager.Instance.Pause();
 
-        selectedNPC = npc;
-        npcMenuPanel.SetActive(true); // 메뉴 패널을 표시합니다.
+            selectedNPC = npc;
+            npcMenuPanel.SetActive(true); // 메뉴 패널을 표시합니다.
 
-        IsOpenNPCUI = true;
+            IsOpenNPCUI = true;
 
-        // NPC 스프라이트를 UI 이미지 컴포넌트에 설정
-        npcSpriteImage.sprite = selectedNPC.GetComponent<SpriteRenderer>().sprite;
+            // NPC 스프라이트를 UI 이미지 컴포넌트에 설정
+            npcSpriteImage.sprite = selectedNPC.GetComponent<SpriteRenderer>().sprite;
+        }
     }
 
     private void HideNPCMenu()
